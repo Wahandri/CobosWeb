@@ -10,7 +10,11 @@ export default function Header() {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -54,12 +58,23 @@ export default function Header() {
                     />
                 </Link>
 
-                <nav className={styles.nav}>
-                    <Link href="/" className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}>Inicio</Link>
-                    <Link href="/servicios" className={`${styles.link} ${pathname === '/servicios' ? styles.active : ''}`}>Servicios</Link>
-                    <Link href="/proyectos" className={`${styles.link} ${pathname === '/proyectos' ? styles.active : ''}`}>Proyectos</Link>
-                    <Link href="/sobre-nosotros" className={`${styles.link} ${pathname === '/sobre-nosotros' ? styles.active : ''}`}>Nosotros</Link>
-                    <Link href="/contacto" className="btn btn-primary">Pedir Presupuesto</Link>
+                <button
+                    className={styles.hamburger}
+                    onClick={toggleMenu}
+                    aria-label="Menu"
+                    aria-expanded={isMenuOpen}
+                >
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.open : ''}`}></span>
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.open : ''}`}></span>
+                    <span className={`${styles.bar} ${isMenuOpen ? styles.open : ''}`}></span>
+                </button>
+
+                <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+                    <Link href="/" className={`${styles.link} ${pathname === '/' ? styles.active : ''}`} onClick={closeMenu}>Inicio</Link>
+                    <Link href="/servicios" className={`${styles.link} ${pathname === '/servicios' ? styles.active : ''}`} onClick={closeMenu}>Servicios</Link>
+                    <Link href="/proyectos" className={`${styles.link} ${pathname === '/proyectos' ? styles.active : ''}`} onClick={closeMenu}>Proyectos</Link>
+                    <Link href="/sobre-nosotros" className={`${styles.link} ${pathname === '/sobre-nosotros' ? styles.active : ''}`} onClick={closeMenu}>Nosotros</Link>
+                    <Link href="/contacto" className="btn btn-primary" onClick={closeMenu}>Pedir Presupuesto</Link>
                 </nav>
             </div>
         </header>

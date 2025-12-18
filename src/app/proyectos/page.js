@@ -5,8 +5,8 @@ import GridGallery from "../../components/GridGallery/GridGallery";
 import CTABox from "../../components/CTABox/CTABox";
 
 export const metadata = {
-    title: "Proyectos Realizados | Tarimas Cobos",
-    description: "Galería de nuestros trabajos de instalación de tarimas y suelos en Málaga.",
+    title: "Galería de Proyectos | Tarimas Cobos",
+    description: "Descubre nuestros trabajos de instalación de suelos y tarimas en Málaga. Fotos reales de acabados en viviendas y locales comerciales.",
 };
 
 export default function ProjectsPage() {
@@ -18,7 +18,7 @@ export default function ProjectsPage() {
                 image="/projects-hero.jpg"
             />
 
-            <Section>
+            <Section className="bg-white">
                 <Container>
                     <GridGallery />
                 </Container>

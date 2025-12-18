@@ -7,6 +7,12 @@ import FAQ from "../components/FAQ/FAQ";
 import Button from "../components/Button/Button";
 import { services } from "../data/services";
 
+export const metadata = {
+  title: "Tarimas Cobos | Instalación de Tarimas y Suelos en Málaga",
+  description: "Expertos en instalación de tarimas flotantes, suelos laminados, vinílicos y parquet en Málaga. Calidad, rapidez y limpieza garantizadas. Pide tu presupuesto.",
+  keywords: "tarimas cobos, instalación tarimas málaga, suelos laminados, parquet málaga, tarima flotante, montadores suelos",
+};
+
 export default function Home() {
   const featuredServices = services.slice(0, 3);
 
@@ -18,7 +24,7 @@ export default function Home() {
         image="/hero-placeholder.jpg"
       />
 
-      <Section>
+      <Section className="bg-white">
         <Container>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2>Nuestros Servicios Destacados</h2>
@@ -40,7 +46,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section className="bg-light" style={{ backgroundColor: 'var(--color-light)' }}>
+      <Section className="bg-light">
         <Container>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2>¿Por qué elegirnos?</h2>
@@ -66,7 +72,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section>
+      <Section className="bg-white">
         <Container>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2>Preguntas Frecuentes</h2>

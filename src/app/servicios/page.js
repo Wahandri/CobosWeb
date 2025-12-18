@@ -6,8 +6,8 @@ import CTABox from "../../components/CTABox/CTABox";
 import { services } from "../../data/services";
 
 export const metadata = {
-    title: "Servicios | Tarimas Cobos",
-    description: "Descubre nuestros servicios de instalación de tarimas, suelos laminados, vinílicos y restauración de parquet.",
+    title: "Servicios de Instalación de Suelos | Tarimas Cobos Málaga",
+    description: "Ofrecemos instalación de tarimas flotantes, suelos vinílicos, rodapiés y restauración de parquet. Servicio profesional en Málaga y provincia.",
 };
 
 export default function ServicesPage() {
@@ -19,7 +19,7 @@ export default function ServicesPage() {
                 image="/services-hero.jpg"
             />
 
-            <Section>
+            <Section className="bg-white">
                 <Container>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                         {services.map(service => (

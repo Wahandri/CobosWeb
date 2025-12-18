@@ -4,8 +4,8 @@ import Container from "../../components/Container/Container";
 import ContactForm from "../../components/ContactForm/ContactForm";
 
 export const metadata = {
-    title: "Contacto | Tarimas Cobos",
-    description: "Pide tu presupuesto sin compromiso. Contacta con nosotros por teléfono, email o formulario.",
+    title: "Contactar | Tarimas Cobos - Presupuesto Sin Compromiso",
+    description: "Contacta con Tarimas Cobos para tu instalación de suelo. Llámanos o escríbenos para recibir asesoramiento y presupuesto gratuito.",
 };
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
                 ctaLink="tel:+34600000000"
             />
 
-            <Section>
+            <Section className="bg-white">
                 <Container>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
                         <div>

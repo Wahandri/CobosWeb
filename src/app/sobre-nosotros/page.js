@@ -4,8 +4,8 @@ import Container from "../../components/Container/Container";
 import CTABox from "../../components/CTABox/CTABox";
 
 export const metadata = {
-    title: "Sobre Nosotros | Tarimas Cobos",
-    description: "Conoce más sobre nuestra empresa, experiencia y valores.",
+    title: "Sobre Nosotros | Tarimas Cobos - Expertos en Suelos",
+    description: "Conoce a Tarimas Cobos, empresa líder en instalación de pavimentos de madera en Málaga con más de 15 años de experiencia.",
 };
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
                 image="/about-hero.jpg"
             />
 
-            <Section>
+            <Section className="bg-white">
                 <Container>
                     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                         <h2>Nuestra Historia</h2>
