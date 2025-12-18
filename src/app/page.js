@@ -1,66 +1,86 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from "../components/Hero/Hero";
+import Section from "../components/Section/Section";
+import Container from "../components/Container/Container";
+import Card from "../components/Card/Card";
+import CTABox from "../components/CTABox/CTABox";
+import FAQ from "../components/FAQ/FAQ";
+import Button from "../components/Button/Button";
+import { services } from "../data/services";
 
 export default function Home() {
+  const featuredServices = services.slice(0, 3);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero
+        title="Instalación de Tarimas y Suelos Laminados en Málaga"
+        subtitle="Acabados profesionales, rapidez y limpieza. Transformamos tu hogar con los mejores materiales."
+        image="/hero-placeholder.jpg"
+      />
+
+      <Section>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2>Nuestros Servicios Destacados</h2>
+            <p className="text-muted">Soluciones integrales para todo tipo de suelos</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {featuredServices.map(service => (
+              <Card
+                key={service.id}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+              />
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Button href="/servicios" variant="outline">Ver todos los servicios</Button>
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="bg-light" style={{ backgroundColor: 'var(--color-light)' }}>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2>¿Por qué elegirnos?</h2>
+            <p>Compromiso con la calidad y la satisfacción del cliente</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+            <div>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⚡</div>
+              <h3>Rapidez</h3>
+              <p>Cumplimos los plazos acordados para minimizar las molestias.</p>
+            </div>
+            <div>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🧹</div>
+              <h3>Limpieza</h3>
+              <p>Dejamos todo impecable tras la instalación. Sin polvo ni escombros.</p>
+            </div>
+            <div>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🛡️</div>
+              <h3>Garantía</h3>
+              <p>2 años de garantía en instalación y garantía de fabricante en materiales.</p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2>Preguntas Frecuentes</h2>
+          </div>
+          <FAQ />
+        </Container>
+      </Section>
+
+      <CTABox
+        title="¿Listo para renovar tu suelo?"
+        text="Pide tu presupuesto sin compromiso hoy mismo."
+        buttonText="Contactar Ahora"
+        buttonLink="/contacto"
+      />
+    </>
   );
 }

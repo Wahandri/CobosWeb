@@ -1,0 +1,46 @@
+.ctaSection {
+    padding: 4rem 0;
+}
+
+.box {
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.text {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.btn {
+    background-color: white;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background-color: var(--color-light);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .box {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+}
