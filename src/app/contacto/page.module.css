@@ -2,9 +2,28 @@
   min-height: 100vh;
 }
 
+.quickContact {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.quickContactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1.2fr;
   gap: 4rem;
 }
 
@@ -12,55 +31,215 @@
   margin-bottom: 1rem;
 }
 
-.infoSection > p {
+.introText {
+  color: var(--color-muted);
+  line-height: 1.7;
   margin-bottom: 2rem;
 }
 
 .contactList {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--color-light);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.contactIcon {
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contactContent h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-muted);
+  margin-bottom: 0.25rem;
+}
+
+.contactValue {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.contactItem a.contactValue:hover {
+  color: var(--color-primary);
+}
+
+.openingHours {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--color-light);
+  border-radius: var(--radius);
   margin-bottom: 1.5rem;
 }
 
-.contactItemHeader {
+.openingIcon {
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.openingHours h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-muted);
+  margin-bottom: 0.25rem;
+}
+
+.openingHours p {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 0;
+  white-space: pre-line;
+}
+
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: #25D366;
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.whatsappBtn:hover {
+  background-color: #20BD5A;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.formSection {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.formHeader h2 {
   margin-bottom: 0.5rem;
 }
 
-.contactItemHeader h3 {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-.contactItem p {
+.formHeader p {
   color: var(--color-muted);
   margin-bottom: 0;
 }
 
-.contactItem a {
-  color: var(--color-primary);
+.serviceAreas {
+  text-align: center;
+  padding: 4rem 0;
 }
 
-.whatsappSection {
-  margin-top: 2rem;
+.serviceAreas h2 {
+  margin-bottom: 0.5rem;
 }
 
-.openingHours {
-  font-size: 0.9rem;
+.serviceAreas > p {
   color: var(--color-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
-.whatsappBtn {
-  background-color: #25D366;
-  color: white;
-  border: none;
+.areasGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: left;
 }
 
-.formSection h2 {
+.areaColumn {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.areaColumn h4 {
+  color: var(--color-primary);
   margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.areaColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.areaColumn li {
+  padding: 0.5rem 0;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.areaColumn li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .areasGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .quickContact {
+    gap: 1.5rem;
+  }
+
+  .quickContactItem {
+    font-size: 0.9rem;
+  }
+
+  .formSection {
+    padding: 2rem 1.5rem;
+  }
+
+  .areasGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .quickContact {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

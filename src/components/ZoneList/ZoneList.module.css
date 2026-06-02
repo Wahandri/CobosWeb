@@ -1,0 +1,78 @@
+.section {
+    padding: 5rem 0;
+    background-color: var(--color-light);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h2 {
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: var(--color-muted);
+    margin-bottom: 0;
+}
+
+.zonesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.zoneCard {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.zoneHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.zoneHeader h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.districts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.district {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    background-color: var(--color-light);
+    padding: 0.35rem 0.75rem;
+    border-radius: 1rem;
+}
+
+.district:hover {
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+    .zonesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .zonesGrid {
+        grid-template-columns: 1fr;
+    }
+}

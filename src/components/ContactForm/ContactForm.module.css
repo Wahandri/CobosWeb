@@ -1,8 +1,8 @@
 .form {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .field {
@@ -12,7 +12,7 @@
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .label {
@@ -20,60 +20,118 @@
     margin-bottom: 0.5rem;
     font-weight: 500;
     font-size: 0.9rem;
+    color: var(--color-secondary);
 }
 
 .input,
-.textarea {
+.textarea,
+.select {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--color-border);
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--color-border);
     border-radius: var(--radius);
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    padding-right: 3rem;
 }
 
 .input:focus,
-.textarea:focus {
+.textarea:focus,
+.select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.1);
+    box-shadow: 0 0 0 3px rgba(193, 127, 56, 0.15);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #9ca3af;
 }
 
 .textarea {
     resize: vertical;
+    min-height: 120px;
 }
 
 .submitBtn {
     width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
 
 .successMessage {
     background-color: #ecfdf5;
     color: #065f46;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border: 1px solid #10b981;
+}
+
+.successMessage strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.successMessage p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.errorMessage {
+    background-color: #fef2f2;
+    color: #dc2626;
     padding: 1rem;
     border-radius: var(--radius);
     margin-bottom: 1.5rem;
-    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.75rem;
-}
-
-.successMessage span {
-    text-align: center;
 }
 
 .inputError {
     border-color: #dc2626 !important;
 }
 
+.inputError:focus {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
 .errorText {
     color: #dc2626;
     font-size: 0.8rem;
-    margin-top: 0.25rem;
+    margin-top: 0.35rem;
     display: block;
+}
+
+.privacyNote {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--color-light);
+    border-radius: var(--radius);
+}
+
+.privacyNote p {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin-bottom: 0;
+    text-align: center;
 }
 
 .submitBtn:disabled {
@@ -84,5 +142,16 @@
 @media (max-width: 640px) {
     .row {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .input,
+    .textarea,
+    .select {
+        padding: 0.75rem;
+    }
+
+    .submitBtn {
+        padding: 0.875rem;
     }
 }
