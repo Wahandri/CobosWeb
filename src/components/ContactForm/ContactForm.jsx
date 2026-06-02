@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
 import Button from '../Button/Button';
+import { CheckCircle } from 'lucide-react';
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -11,18 +12,33 @@ export default function ContactForm() {
         email: '',
         message: ''
     });
-    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+    const [errors, setErrors] = useState({});
+    const [status, setStatus] = useState('idle');
+
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = 'El nombre es obligatorio';
+        if (!formData.phone.trim()) newErrors.phone = 'El teléfono es obligatorio';
+        else if (!/^[0-9+\s-]{9,}$/.test(formData.phone)) newErrors.phone = 'Teléfono no válido';
+        if (!formData.email.trim()) newErrors.email = 'El email es obligatorio';
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Email no válido';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: '' }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setStatus('submitting');
+        if (!validate()) return;
 
-        // Simulate API call
+        setStatus('submitting');
         setTimeout(() => {
             console.log('Form submitted:', formData);
             setStatus('success');
@@ -34,7 +50,8 @@ export default function ContactForm() {
         <form className={styles.form} onSubmit={handleSubmit}>
             {status === 'success' && (
                 <div className={styles.successMessage}>
-                    ¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.
+                    <CheckCircle size={24} />
+                    <span>¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.</span>
                 </div>
             )}
 
@@ -45,10 +62,11 @@ export default function ContactForm() {
                     id="name"
                     name="name"
                     required
-                    className={styles.input}
+                    className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                     value={formData.name}
                     onChange={handleChange}
                 />
+                {errors.name && <span className={styles.errorText}>{errors.name}</span>}
             </div>
 
             <div className={styles.row}>
@@ -59,10 +77,11 @@ export default function ContactForm() {
                         id="phone"
                         name="phone"
                         required
-                        className={styles.input}
+                        className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
                         value={formData.phone}
                         onChange={handleChange}
                     />
+                    {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
                 </div>
 
                 <div className={styles.field}>
@@ -72,10 +91,11 @@ export default function ContactForm() {
                         id="email"
                         name="email"
                         required
-                        className={styles.input}
+                        className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
                         value={formData.email}
                         onChange={handleChange}
                     />
+                    {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                 </div>
             </div>
 
@@ -91,7 +111,7 @@ export default function ContactForm() {
                 ></textarea>
             </div>
 
-            <Button type="submit" variant="primary" className={styles.submitBtn}>
+            <Button type="submit" variant="primary" className={styles.submitBtn} disabled={status === 'submitting'}>
                 {status === 'submitting' ? 'Enviando...' : 'Enviar Mensaje'}
             </Button>
         </form>

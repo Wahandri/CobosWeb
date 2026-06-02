@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styles from './GridGallery.module.css';
 import { projects } from '../../data/projects';
 import Card from '../Card/Card';
+import { MapPin } from 'lucide-react';
 
 export default function GridGallery() {
     const [filter, setFilter] = useState('Todos');
@@ -39,7 +40,10 @@ export default function GridGallery() {
                         className={styles.projectCard}
                     >
                         <div className={styles.meta}>
-                            <span className={styles.location}>📍 {project.location}</span>
+                            <span className={styles.location}>
+                                <MapPin size={14} style={{ verticalAlign: 'middle', marginRight: '0.25rem' }} />
+                                {project.location}
+                            </span>
                             <div className={styles.tags}>
                                 {project.tags.map(tag => (
                                     <span key={tag} className={styles.tag}>{tag}</span>

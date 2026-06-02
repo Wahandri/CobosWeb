@@ -2,6 +2,9 @@ import Hero from "../../components/Hero/Hero";
 import Section from "../../components/Section/Section";
 import Container from "../../components/Container/Container";
 import ContactForm from "../../components/ContactForm/ContactForm";
+import { company, contactLinks } from "../../data/company";
+import { MapPin, Phone, Mail } from "lucide-react";
+import styles from "./page.module.css";
 
 export const metadata = {
     title: "Contactar | Tarimas Cobos - Presupuesto Sin Compromiso",
@@ -10,51 +13,62 @@ export const metadata = {
 
 export default function ContactPage() {
     return (
-        <>
+        <div className={styles.page}>
             <Hero
                 title="Contacto"
                 subtitle="Estamos aquí para ayudarte. Cuéntanos tu proyecto."
-                image="/contact-hero.jpg"
+                image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
                 ctaText="Llamar Ahora"
-                ctaLink="tel:+34600000000"
+                ctaLink={contactLinks.phone}
             />
 
             <Section className="bg-white">
                 <Container>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem' }}>
-                        <div>
+                    <div className={styles.grid}>
+                        <div className={styles.infoSection}>
                             <h2>Información de Contacto</h2>
                             <p>
                                 Si tienes alguna duda o quieres solicitar un presupuesto, no dudes en contactarnos. Te responderemos lo antes posible.
                             </p>
 
-                            <div style={{ marginTop: '2rem' }}>
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>📍 Dirección</h3>
-                                    <p className="text-muted">Calle Ejemplo, 123<br />29000 Málaga, España</p>
+                            <div className={styles.contactList}>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactItemHeader}>
+                                        <MapPin size={20} color="var(--color-primary)" />
+                                        <h3>Dirección</h3>
+                                    </div>
+                                    <p className={styles.contactItemP}>{company.address.street}<br />{company.address.zip} {company.address.city}, {company.address.country}</p>
                                 </div>
 
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>📞 Teléfono</h3>
-                                    <p className="text-muted">
-                                        <a href="tel:+34600000000" style={{ color: 'var(--color-primary)' }}>+34 600 000 000</a>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactItemHeader}>
+                                        <Phone size={20} color="var(--color-primary)" />
+                                        <h3>Teléfono</h3>
+                                    </div>
+                                    <p className={styles.contactItemP}>
+                                        <a href={contactLinks.phone}>+34 {company.phoneFormatted}</a>
                                     </p>
                                 </div>
 
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>✉️ Email</h3>
-                                    <p className="text-muted">
-                                        <a href="mailto:info@tarimascobos.es">info@tarimascobos.es</a>
+                                <div className={styles.contactItem}>
+                                    <div className={styles.contactItemHeader}>
+                                        <Mail size={20} color="var(--color-primary)" />
+                                        <h3>Email</h3>
+                                    </div>
+                                    <p className={styles.contactItemP}>
+                                        <a href={contactLinks.email}>{company.email}</a>
                                     </p>
                                 </div>
 
-                                <div style={{ marginTop: '2rem' }}>
+                                <div className={styles.whatsappSection}>
+                                    <p className={styles.openingHours}>
+                                        {company.openingHours}
+                                    </p>
                                     <a
-                                        href="https://wa.me/34600000000"
+                                        href={contactLinks.whatsapp}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="btn"
-                                        style={{ backgroundColor: '#25D366', color: 'white', border: 'none' }}
+                                        className={`btn ${styles.whatsappBtn}`}
                                     >
                                         Chat en WhatsApp
                                     </a>
@@ -62,13 +76,13 @@ export default function ContactPage() {
                             </div>
                         </div>
 
-                        <div>
+                        <div className={styles.formSection}>
                             <h2>Envíanos un mensaje</h2>
                             <ContactForm />
                         </div>
                     </div>
                 </Container>
             </Section>
-        </>
+        </div>
     );
 }

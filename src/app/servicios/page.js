@@ -4,6 +4,7 @@ import Container from "../../components/Container/Container";
 import Card from "../../components/Card/Card";
 import CTABox from "../../components/CTABox/CTABox";
 import { services } from "../../data/services";
+import styles from "./page.module.css";
 
 export const metadata = {
     title: "Servicios de Instalación de Suelos | Tarimas Cobos Málaga",
@@ -12,16 +13,16 @@ export const metadata = {
 
 export default function ServicesPage() {
     return (
-        <>
+        <div className={styles.page}>
             <Hero
                 title="Nuestros Servicios"
                 subtitle="Soluciones profesionales para cada necesidad. Calidad y garantía aseguradas."
-                image="/services-hero.jpg"
+                image="https://images.unsplash.com/photo-1581858726788-75a0f6b7f7f1?w=1920&q=80"
             />
 
             <Section className="bg-white">
                 <Container>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                    <div className={styles.servicesGrid}>
                         {services.map(service => (
                             <Card
                                 key={service.id}
@@ -40,6 +41,6 @@ export default function ServicesPage() {
                 buttonText="Consultar"
                 buttonLink="/contacto"
             />
-        </>
+        </div>
     );
 }

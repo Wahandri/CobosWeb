@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Footer.module.css';
+import { company, contactLinks } from '../../data/company';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -11,14 +13,14 @@ export default function Footer() {
                         <div className={styles.logoWrapper}>
                             <Image
                                 src="/logoCobos.png"
-                                alt="Tarimas Cobos"
+                                alt={company.name}
                                 width={200}
                                 height={70}
                                 style={{ objectFit: 'contain', marginBottom: '1rem' }}
                             />
                         </div>
                         <p className={styles.text}>
-                            Especialistas en instalación de suelos, tarimas y parquet en Málaga.
+                            Especialistas en instalación de suelos, tarimas y parquet en {company.address.city}.
                         </p>
                     </div>
 
@@ -43,14 +45,23 @@ export default function Footer() {
 
                     <div>
                         <h4 className={styles.subtitle}>Contacto</h4>
-                        <p className={styles.text}>Málaga, España</p>
-                        <p className={styles.text}>info@tarimascobos.es</p>
-                        <p className={styles.text}>+34 600 000 000</p>
+                        <div className={styles.contactItem}>
+                            <MapPin size={16} color="var(--color-primary)" />
+                            <p className={styles.text}>{company.address.city}, {company.address.province}</p>
+                        </div>
+                        <div className={styles.contactItem}>
+                            <Mail size={16} color="var(--color-primary)" />
+                            <p className={styles.text}>{company.email}</p>
+                        </div>
+                        <div className={styles.contactItem}>
+                            <Phone size={16} color="var(--color-primary)" />
+                            <p className={styles.text}>+34 {company.phoneFormatted}</p>
+                        </div>
                     </div>
                 </div>
 
                 <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} Tarimas Cobos. Todos los derechos reservados.</p>
+                    <p>&copy; {new Date().getFullYear()} {company.name}. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>

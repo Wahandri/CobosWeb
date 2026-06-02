@@ -6,6 +6,8 @@ import CTABox from "../components/CTABox/CTABox";
 import FAQ from "../components/FAQ/FAQ";
 import Button from "../components/Button/Button";
 import { services } from "../data/services";
+import { Zap, Sparkles, Shield } from "lucide-react";
+import styles from "./page.module.css";
 
 export const metadata = {
   title: "Tarimas Cobos | Instalación de Tarimas y Suelos en Málaga",
@@ -17,20 +19,20 @@ export default function Home() {
   const featuredServices = services.slice(0, 3);
 
   return (
-    <>
+    <div className={styles.page}>
       <Hero
         title="Instalación de Tarimas y Suelos Laminados en Málaga"
         subtitle="Acabados profesionales, rapidez y limpieza. Transformamos tu hogar con los mejores materiales."
-        image="/hero-placeholder.jpg"
+        image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80"
       />
 
       <Section className="bg-white">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div className={styles.sectionHeader}>
             <h2>Nuestros Servicios Destacados</h2>
-            <p className="text-muted">Soluciones integrales para todo tipo de suelos</p>
+            <p>Soluciones integrales para todo tipo de suelos</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div className={styles.servicesGrid}>
             {featuredServices.map(service => (
               <Card
                 key={service.id}
@@ -40,7 +42,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <div className={styles.sectionFooter}>
             <Button href="/servicios" variant="outline">Ver todos los servicios</Button>
           </div>
         </Container>
@@ -48,23 +50,29 @@ export default function Home() {
 
       <Section className="bg-light">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div className={styles.sectionHeader}>
             <h2>¿Por qué elegirnos?</h2>
             <p>Compromiso con la calidad y la satisfacción del cliente</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', textAlign: 'center' }}>
-            <div>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⚡</div>
+          <div className={styles.whyUsGrid}>
+            <div className={styles.whyUsItem}>
+              <div className={styles.iconCircle}>
+                <Zap size={28} color="var(--color-primary)" />
+              </div>
               <h3>Rapidez</h3>
               <p>Cumplimos los plazos acordados para minimizar las molestias.</p>
             </div>
-            <div>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🧹</div>
+            <div className={styles.whyUsItem}>
+              <div className={styles.iconCircle}>
+                <Sparkles size={28} color="var(--color-primary)" />
+              </div>
               <h3>Limpieza</h3>
               <p>Dejamos todo impecable tras la instalación. Sin polvo ni escombros.</p>
             </div>
-            <div>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🛡️</div>
+            <div className={styles.whyUsItem}>
+              <div className={styles.iconCircle}>
+                <Shield size={28} color="var(--color-primary)" />
+              </div>
               <h3>Garantía</h3>
               <p>2 años de garantía en instalación y garantía de fabricante en materiales.</p>
             </div>
@@ -74,7 +82,7 @@ export default function Home() {
 
       <Section className="bg-white">
         <Container>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div className={styles.faqHeader}>
             <h2>Preguntas Frecuentes</h2>
           </div>
           <FAQ />
@@ -87,6 +95,6 @@ export default function Home() {
         buttonText="Contactar Ahora"
         buttonLink="/contacto"
       />
-    </>
+    </div>
   );
 }

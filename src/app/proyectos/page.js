@@ -3,6 +3,7 @@ import Section from "../../components/Section/Section";
 import Container from "../../components/Container/Container";
 import GridGallery from "../../components/GridGallery/GridGallery";
 import CTABox from "../../components/CTABox/CTABox";
+import styles from "./page.module.css";
 
 export const metadata = {
     title: "Galería de Proyectos | Tarimas Cobos",
@@ -11,11 +12,11 @@ export const metadata = {
 
 export default function ProjectsPage() {
     return (
-        <>
+        <div className={styles.page}>
             <Hero
                 title="Nuestros Proyectos"
                 subtitle="Una imagen vale más que mil palabras. Descubre la calidad de nuestros acabados."
-                image="/projects-hero.jpg"
+                image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
             />
 
             <Section className="bg-white">
@@ -30,6 +31,6 @@ export default function ProjectsPage() {
                 buttonText="Pedir Presupuesto"
                 buttonLink="/contacto"
             />
-        </>
+        </div>
     );
 }

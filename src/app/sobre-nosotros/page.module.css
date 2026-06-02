@@ -1,0 +1,35 @@
+.page {
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.content p {
+  line-height: 1.7;
+}
+
+.valuesHeading {
+  margin-top: 3rem;
+}
+
+.valuesList {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.valuesList li {
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+}
+
+.valuesList strong {
+  color: var(--color-primary);
+}

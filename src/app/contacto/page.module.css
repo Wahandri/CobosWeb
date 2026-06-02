@@ -1,0 +1,66 @@
+.page {
+  min-height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+}
+
+.infoSection h2 {
+  margin-bottom: 1rem;
+}
+
+.infoSection > p {
+  margin-bottom: 2rem;
+}
+
+.contactList {
+  margin-top: 2rem;
+}
+
+.contactItem {
+  margin-bottom: 1.5rem;
+}
+
+.contactItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.contactItemHeader h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.contactItem p {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+
+.contactItem a {
+  color: var(--color-primary);
+}
+
+.whatsappSection {
+  margin-top: 2rem;
+}
+
+.openingHours {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.whatsappBtn {
+  background-color: #25D366;
+  color: white;
+  border: none;
+}
+
+.formSection h2 {
+  margin-bottom: 1rem;
+}
